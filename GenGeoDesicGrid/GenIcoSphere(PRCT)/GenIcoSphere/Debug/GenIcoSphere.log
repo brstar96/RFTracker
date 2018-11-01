@@ -1,0 +1,6 @@
+﻿main.obj : error LNK2019: ___glutInitWithExit@12 외부 기호(참조 위치: _glutInit_ATEXIT_HACK@8 함수)에서 확인하지 못했습니다.
+main.obj : error LNK2019: ___glutCreateWindowWithExit@8 외부 기호(참조 위치: _glutCreateWindow_ATEXIT_HACK@4 함수)에서 확인하지 못했습니다.
+main.obj : error LNK2019: "public: __thiscall Image::Bmp::Bmp(void)" (??0Bmp@Image@@QAE@XZ) 외부 기호(참조 위치: "unsigned int __cdecl loadTexture(char const *,bool)" (?loadTexture@@YAIPBD_N@Z) 함수)에서 확인하지 못했습니다.
+main.obj : error LNK2019: "public: __thiscall Image::Bmp::~Bmp(void)" (??1Bmp@Image@@QAE@XZ) 외부 기호(참조 위치: "unsigned int __cdecl loadTexture(char const *,bool)" (?loadTexture@@YAIPBD_N@Z) 함수)에서 확인하지 못했습니다.
+main.obj : error LNK2019: "public: bool __thiscall Image::Bmp::read(char const *)" (?read@Bmp@Image@@QAE_NPBD@Z) 외부 기호(참조 위치: "unsigned int __cdecl loadTexture(char const *,bool)" (?loadTexture@@YAIPBD_N@Z) 함수)에서 확인하지 못했습니다.
+D:\OneDrive\grad_SSU\RnD\RFTracker\ReferenceProjects\IcoSpherePRCT\GenIcoSphere\Debug\GenIcoSphere.exe : fatal error LNK1120: 5개의 확인할 수 없는 외부 참조입니다.

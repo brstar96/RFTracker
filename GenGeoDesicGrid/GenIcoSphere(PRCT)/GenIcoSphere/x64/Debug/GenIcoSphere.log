@@ -1,0 +1,8 @@
+﻿  main.cpp
+d:\onedrive\grad_ssu\rnd\rftracker\referenceprojects\icosphereprct\genicosphere\genicosphere\main.cpp(586): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\onedrive\grad_ssu\rnd\rftracker\referenceprojects\icosphereprct\genicosphere\genicosphere\main.cpp(587): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\onedrive\grad_ssu\rnd\rftracker\referenceprojects\icosphereprct\genicosphere\genicosphere\main.cpp(627): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\onedrive\grad_ssu\rnd\rftracker\referenceprojects\icosphereprct\genicosphere\genicosphere\main.cpp(628): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\onedrive\grad_ssu\rnd\rftracker\referenceprojects\icosphereprct\genicosphere\genicosphere\main.cpp(633): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GenIcoSphere.vcxproj -> D:\OneDrive\grad_SSU\RnD\RFTracker\ReferenceProjects\IcoSpherePRCT\GenIcoSphere\x64\Debug\GenIcoSphere.exe
+  GenIcoSphere.vcxproj -> D:\OneDrive\grad_SSU\RnD\RFTracker\ReferenceProjects\IcoSpherePRCT\GenIcoSphere\x64\Debug\GenIcoSphere.pdb (Full PDB)
