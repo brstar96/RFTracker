@@ -147,11 +147,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="IcoSphereTest.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="icosahedron.cpp" />
+    <ClCompile Include="IcoSphere.cpp" />
+    <ClCompile Include="main_icosahedron.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="main_icosphere.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="glext.h" />
+    <ClInclude Include="glExtension.h" />
+    <ClInclude Include="icosahedron.h" />
     <ClInclude Include="icosphere.h" />
+    <ClInclude Include="Vectors.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
