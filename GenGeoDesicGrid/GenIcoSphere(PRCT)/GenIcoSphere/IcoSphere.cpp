@@ -19,11 +19,7 @@
 #include <iomanip>
 #include <cmath>
 #include "Icosphere.h"
-
-
-
-// constants //////////////////////////////////////////////////////////////////
-
+using namespace std; //std사용을 위한 네임스페이스 선언
 
 
 
@@ -132,6 +128,8 @@ void Icosphere::drawLines(const float lineColor[4]) const
 	glVertexPointer(3, GL_FLOAT, 0, vertices.data());
 
 	glDrawElements(GL_LINES, (unsigned int)lineIndices.size(), GL_UNSIGNED_INT, lineIndices.data());
+	//glDrawElements(GL_POINTS, (unsigned int)lineIndices.size(), GL_UNSIGNED_INT, lineIndices.data());
+	
 
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glEnable(GL_LIGHTING);
@@ -187,7 +185,7 @@ void Icosphere::updateRadius()
 // 5 vertices are placed by rotating 72 deg at elevation 26.57 deg (=atan(1/2))
 // 5 vertices are placed by rotating 72 deg at elevation -26.57 deg
 ///////////////////////////////////////////////////////////////////////////////
-std::vector<float> Icosphere::computeIcosahedronVertices()
+std::vector<float> Icosphere::computeIcosahedronVertices() //Icosadron을 위한 버텍스 연산 부분
 {
 	const float PI = 3.1415926f;
 	const float H_ANGLE = PI / 180 * 72;    // 72 degree = 360 / 5

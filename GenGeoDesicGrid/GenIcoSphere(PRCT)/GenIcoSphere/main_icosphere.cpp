@@ -76,7 +76,7 @@ Icosphere sphere(1.0f, subdivision, false);    // radius, subdivision, smooth
 int main(int argc, char **argv)
 {
 	// init global vars
-	initSharedMem();
+	initSharedMem(); //스크린해상도, 마우스포지션, 카메라앵글 및 거리, 콘솔출력용 정보출력함수(printSelf())
 
 	// init GLUT and GL
 	initGLUT(argc, argv);
@@ -118,18 +118,11 @@ int initGLUT(int argc, char **argv)
 	glutTimerFunc(33, timerCB, 33);             // redraw only every given millisec
 	glutReshapeFunc(reshapeCB);
 
-
-
-
 	glutKeyboardFunc(keyboardCB);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
-
-
-
-
 
 	glutMouseFunc(mouseCB);
 	glutMotionFunc(mouseMotionCB);
@@ -242,7 +235,7 @@ bool initSharedMem()
 	cameraAngleX = cameraAngleY = 0.0f;
 	cameraDistance = CAMERA_DISTANCE;
 
-	drawMode = 0; // 0:fill, 1: wireframe, 2:points
+	//drawMode = 0; // 0:fill, 1: wireframe, 2:points
 
 				  //DEBUG
 				  //sphere.setEdgeLength(1);
@@ -509,9 +502,9 @@ void displayCB()
 	//glBindTexture(GL_TEXTURE_2D, texId);
 	//glBindTexture(GL_TEXTURE_2D, 0);
 
-	if (drawMode == 2)
+	/*if (drawMode == 2)
 		sphere.draw();
-	else
+	else*/
 		sphere.drawWithLines(lineColor);
 
 
