@@ -13,11 +13,13 @@ import pandas as pd  # data structures for data analysis
 import cv2
 from sklearn import datasets
 from sklearn.decomposition import PCA
+import os
 
 df_list = []
 # Test데이터셋을 위한 코드
 for img_no in range(0, 720):
-    gray_img = cv2.imread("TestImages/0_5degree" + str(img_no) + ".png", 0)
+    imgPath ="../TestImages/0_5degree/" + str(img_no) + ".png"
+    gray_img = cv2.imread(imgPath, 0)
     list = []
     width, height = gray_img.shape
     for i in range(0, height):

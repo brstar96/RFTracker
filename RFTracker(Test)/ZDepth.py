@@ -71,7 +71,7 @@ def LoadTestDataSet (TestDegree,TestImagePath):
         for i in range(0, height):
             for j in range(0, width):
                 list.append(gray_img[i, j] / 255)
-        print("img parsing no : ", img_no)
+        # print("img parsing no : ", img_no)
         arr = np.array(list)
         df = pd.DataFrame(arr.reshape(1, 2500))
         df_list.append(df)
