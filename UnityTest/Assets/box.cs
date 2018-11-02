@@ -19,15 +19,7 @@ public class box : MonoBehaviour {
         tcpListener.Start();
         tcpclient = tcpListener.AcceptTcpClient();
         Debug.Log("대기 상태 시작!!");
-        
-        //ReceiveMessage = Encoding.Default.GetBytes("0,0,0,0,0,0");
-
         ns = tcpclient.GetStream();
-        
-            
-
-        
-
     }
 
     void Update() {
@@ -35,36 +27,21 @@ public class box : MonoBehaviour {
         ns.Read(ReceiveMessage, 0, 1024);
         StrReceiveMessage = Encoding.ASCII.GetString(ReceiveMessage);
         Debug.Log("strRecevieMessageis " + StrReceiveMessage);
-        //    
-        //    ReceiveMessage = new byte[6];
-        //    ns = tcpclient.GetStream();
-        //    ns.Read(ReceiveMessage, 0, 6);
-        //    StrReceiveMessage = Encoding.UTF8.GetString(ReceiveMessage);
-        //    Debug.Log("strRecevieMessageis "+StrReceiveMessage);
+        string[] T = StrReceiveMessage.Split(',');        
+        
+        string tx = T[0];
+        string ty = T[1];
+        string tz = T[2];
 
-        //string[] T = StrReceiveMessage.Split(',');
-        //for (int a = 0; a < T.Length;  a++)
-        //{
-        //    Debug.Log(a+"="+T[a]);
 
-        //}
-        // Debug.Log("========================");
-        //string tx = T[0];
-        //string ty = T[1];
-        //string tz = T[2];
-
-        //string rx = T[3];
-        //string ry = T[4];
-        //string rz = T[5];
+        string rx = T[3];
+        string ry = T[4];
+        string rz = T[5];
 
 
 
-        //transform.position = new Vector3(float.Parse(tx), 0, 0);
-        //transform.position = new Vector3(0,float.Parse(ty), 0);
-        //transform.position = new Vector3(0,0,float.Parse(tz));
-
-        //transform.localEulerAngles = new Vector3(float.Parse(rx), 0, 0);
-        //transform.localEulerAngles = new Vector3(0,float.Parse(ry),0);
-        //transform.localEulerAngles = new Vector3(0,0,float.Parse(rz));
+        transform.position = new Vector3(float.Parse(tx), float.Parse(ty), float.Parse(tz));
+        transform.localEulerAngles = new Vector3(float.Parse(rx), float.Parse(ry), float.Parse(rz));
+        
     }
 }
