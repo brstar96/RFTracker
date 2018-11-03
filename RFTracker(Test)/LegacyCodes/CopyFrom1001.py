@@ -58,12 +58,7 @@ if(Mode=="train"):
     with open('entry.pickle', 'wb') as f:   # f는 파일핸들러.
         pickle.dump(rf, f)
 
-
-
-
-
 else:
-
 
     TestDegree =3
     TestImagePath = "../TestImages/3degree"
