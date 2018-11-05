@@ -659,7 +659,7 @@ void Icosphere::subdivideVerticesFlat()
 }
 
 
-
+//서브디비전 수행해서 새로운 버텍스 만드는 부분 
 ///////////////////////////////////////////////////////////////////////////////
 // divide a trianlge (v1-v2-v3) into 4 sub triangles by adding middle vertices
 // (newV1, newV2, newV3) and repeat N times

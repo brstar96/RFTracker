@@ -12,6 +12,7 @@ from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import pickle
+import csv
 
 import numpy as np  # efficient numerical computations
 import pandas as pd  # data structures for data analysis
@@ -91,8 +92,11 @@ predicted_train = rf.predict(X_train)
 # predicted_test = rf.predict(df_scaled) #모든 테스트셋에 대해 테스트 수행
 
 print(type(rf.fit(X_train, y_train)))
+resultList = []
+fp = open("result.csv","w")
+writer = csv.writer(fp)
 
-
+writer.writerow("GT,Prediction",)
 
 
 
@@ -100,4 +104,9 @@ print(len(df_scaled_list))
 for index in range(0, int(360/TestDegree)):
     prediction = rf.predict(df_scaled_list[index])
     print("GT",index*TestDegree,"prediction : ", prediction, "도")
+    resultList.append(float(index*TestDegree))
+    resultList.append(float(prediction))
+    writer.writerow(resultList)
+    resultList=[]
+
 

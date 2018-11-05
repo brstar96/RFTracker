@@ -52,7 +52,7 @@ def CreateTrainDataSet(degree,ImagePath,csvPath):
             for k in range(0, width * height):
                 headList.append("x" + str(k + 1))
             headList.append("dgree")
-            writer.writerow(headList)
+
         for i in range(0, height):
             for j in range(0, width):
                 list.append(gray_img[i, j] / 255)
