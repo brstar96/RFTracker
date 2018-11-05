@@ -96,8 +96,8 @@ print(type(rf.fit(X_train, y_train)))
 
 
 
-# print(len(df_scaled_list))
-# for index in range(0, int(360/TestDegree)):
-#     prediction = rf.predict(df_scaled_list[index])
-#     print("GT",index*TestDegree,"prediction : ", prediction, "도")
+print(len(df_scaled_list))
+for index in range(0, int(360/TestDegree)):
+    prediction = rf.predict(df_scaled_list[index])
+    print("GT",index*TestDegree,"prediction : ", prediction, "도")
 

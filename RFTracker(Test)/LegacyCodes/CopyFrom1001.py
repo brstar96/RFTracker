@@ -16,7 +16,7 @@ import numpy as np  # efficient numerical computations
 import pandas as pd  # data structures for data analysis
 import ZDepth as MyData
 
-Mode = "test"
+Mode = "train"
 TrainDegree =5
 TrainImagePath = "../TrainingImages/5degree"
 TrainDataFile = "5degreeTraining.csv"
@@ -43,7 +43,9 @@ if(Mode=="train"):
     # 높은 데이터 차원은 좋은 결과를 주지 못하기 때문에('차원의 저주') PCA 등의 방법으로 차원을 낮춰 주어야 한다.
     pca = PCA()  # pca는 PCA()함수를 통해 생성된 인스턴스
     pca.fit(X_train)  # X_train을 PCA()함수로 차원을 낮춰준 다음 pca에 적합화(fit)하여 저장
+
     cpts = pd.DataFrame(pca.transform(X_train))
+
     x_axis = np.arange(1, pca.n_components_ + 1)
     pca_scaled = PCA()
     pca_scaled.fit(X_train_scaled)
@@ -57,6 +59,7 @@ if(Mode=="train"):
     rf.fit(X_train, y_train)  # rf estimator instance에 대해 X_train이라는 데이터를 받고 y_train의 범주로 학습시킴.
     with open('entry.pickle', 'wb') as f:   # f는 파일핸들러.
         pickle.dump(rf, f)
+
 
 else:
 
@@ -84,8 +87,6 @@ else:
 # print(y_train)
 # print(X_test)
 # print(y_test)
-
-
 
 
 # 여기까지 cmd에서 돌리면 아래와 같이 RF가 형성되는것을 확인가능
