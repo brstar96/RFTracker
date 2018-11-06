@@ -26,7 +26,7 @@ if(Mode=="train"):
     MyData.CreateTrainDataSet(TrainDegree,TrainImagePath,TrainDataFile)
     TrainData = MyData.LoadMyData(TrainDataFile)  #
     features = pd.DataFrame(TrainData['data'], columns=TrainData['feature'])  # 입력은 Boston 데이터셋, 칼럼은 보
-    # 스턴 데이터셋 내의 인덱스를 그대로 가져옴.
+    # 보스턴 데이터셋 내의 인덱스를 그대로 가져옴.
     targets = TrainData["target"]  # 정답 레이블은 보스턴 데이터셋의 .target 멤버 안에 있는 데이터를 사용.
 
     # 보통 입력 데이터(feature)를 X로, 레이블(또는 출력)을 y로 표시함. 이때 레이블은 single column 일수도 있고 여러 열로 구성될수도 있음

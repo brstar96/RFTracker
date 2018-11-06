@@ -93,7 +93,7 @@ predicted_train = rf.predict(X_train)
 
 print(type(rf.fit(X_train, y_train)))
 resultList = []
-fp = open("result.csv","w")
+fp = open("result.csv","w",newline="")
 writer = csv.writer(fp)
 
 writer.writerow("GT,Prediction",)
@@ -104,7 +104,7 @@ print(len(df_scaled_list))
 for index in range(0, int(360/TestDegree)):
     prediction = rf.predict(df_scaled_list[index])
     print("GT",index*TestDegree,"prediction : ", prediction, "도")
-    resultList.append(float(index*TestDegree))
+    resultList.append(index*TestDegree)
     resultList.append(float(prediction))
     writer.writerow(resultList)
     resultList=[]
