@@ -11,11 +11,13 @@ from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import pickle
-
+from sklearn.ensemble import RandomForestRegressor as regressor
 import numpy as np  # efficient numerical computations
 import pandas as pd  # data structures for data analysis
 import ZDepth as MyData
-
+from sklearn import tree
+import os
+os.environ["PATH"] += os.pathsep + "D:/graphviz/bin"
 Mode = "train"
 TrainDegree =5
 TrainImagePath = "../TrainingImages/5degree"
@@ -57,8 +59,7 @@ if(Mode=="train"):
     # random_state는 난수 생성 프로그램에서 사용되는 시드(초기값).
     # rf는 저자가 정의한 estimator의 instance로, RandomForestRegressor 함수로 이 인스턴스를 학습시킬 것임.
     rf.fit(X_train, y_train)  # rf estimator instance에 대해 X_train이라는 데이터를 받고 y_train의 범주로 학습시킴.
-    with open('entry.pickle', 'wb') as f:   # f는 파일핸들러.
-        pickle.dump(rf, f)
+
 
 
 else:

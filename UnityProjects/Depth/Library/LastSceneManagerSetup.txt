@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/depth.unity
+  isLoaded: 1
+  isActive: 1
