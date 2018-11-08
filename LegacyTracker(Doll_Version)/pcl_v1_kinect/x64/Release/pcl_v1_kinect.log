@@ -1,0 +1,11 @@
+﻿Build started 2018-11-05 오후 7:24:33.
+     1>Project "D:\OneDrive\grad_SSU\RnD\RFTracker\LegacyProjectsBackup\선행연구 인수인계\Doll_Version\pcl_v1_kinect\pcl_v1_kinect.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Program Files\PCL 1.8.1\include\pcl-1.8" /I"C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\\inc" /I"C:\Program Files\PCL 1.7.2\include\pcl-1.7" /I"C:\Program Files\PCL 1.7.2\3rdParty\Boost\include\boost-1_57" /I"C:\Program Files\PCL 1.7.2\3rdParty\Eigen\eigen3" /I"C:\Program Files\PCL 1.7.2\3rdParty\FLANN\include" /I"C:\Program Files\PCL 1.7.2\3rdParty\QHull\include" /I"C:\Program Files\PCL 1.7.2\3rdParty\VTK\include\vtk-6.2" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /openmp /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt Final.cpp
+         Final.cpp
+     1>d:\onedrive\grad_ssu\rnd\rftracker\legacyprojectsbackup\선행연구 인수인계\doll_version\pcl_v1_kinect\stdafx.h(5): fatal error C1083: Cannot open include file: 'boost/make_shared.hpp': No such file or directory
+     1>Done Building Project "D:\OneDrive\grad_SSU\RnD\RFTracker\LegacyProjectsBackup\선행연구 인수인계\Doll_Version\pcl_v1_kinect\pcl_v1_kinect.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.92
