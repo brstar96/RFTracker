@@ -3,7 +3,7 @@
 import cv2
 import csv
 
-csvfile = open("ZDepth0928_5degree.scv","w",newline='')
+csvfile = open('ZDepth0928_5degree.csv','w',newline='')
 writer = csv.writer(csvfile)
 # writer.writerow(["height", "width", "gray_scale"])
 headList = []
