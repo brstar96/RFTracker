@@ -1,26 +1,64 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System;
+using System.Threading;
+
 [ExecuteInEditMode]
 public class SnapDepthCamera : MonoBehaviour {
     public Material mat;
     public int width = 512;
     public int height = 512;
-
     private Camera cam;
     private RenderTexture rt;
+
     private int image_id = 0;
     private bool SnapFlag = false;
-    
-	// Use this for initialization
-	void Start () {
+    string[] files;
+    string[] lines;
+    GameObject bunny;
+
+    // Use this for initialization
+    void Start () {
         cam = GetComponent<Camera>();   //获取当前绑定到脚本的相机
-
         cam.depthTextureMode = DepthTextureMode.Depth;
-
         rt = new RenderTexture(width, height, 24);  // 24 bit depth
         cam.targetTexture = rt;
-	}
+
+        string path = @"D:\RFTracker\DepthImage\Assets\RandomizedFiles";
+        bunny = GameObject.Find("StanfordBunny");
+        files = Directory.GetFiles(path, "*.csv");
+        
+        for (int fileNo=0; fileNo < files.Length; fileNo++)
+        {
+            lines = File.ReadAllLines(files[fileNo]);
+            for (int lineNo = 0; lineNo < lines.Length; lineNo++)
+            {
+                string[]colums = lines[lineNo].Split(',');
+                
+                bunny.transform.Translate(float.Parse(colums[0]), float.Parse(colums[1]), float.Parse(colums[2]));
+
+                bunny.transform.Rotate(float.Parse(colums[3]), float.Parse(colums[4]), float.Parse(colums[5]));
+                Debug.Log("fileNo"+fileNo+"lineNo:"+lineNo+"translate:"+ colums[0] +","+colums[1] + ","+colums[2] + "loate:" + colums[3]+","+ colums[4]+","+colums[5]);
+                Thread.Sleep(500);
+                bunny.transform.Translate(0,0,0);
+                bunny.transform.Rotate(0,0,0);
+            }
+        }
+
+
+
+
+
+
+        
+        //SnapFlag = true;
+    }
+
+
+
+
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
@@ -37,12 +75,14 @@ public class SnapDepthCamera : MonoBehaviour {
             image.ReadPixels(new Rect(0, 0, destination.width, destination.height), 0, 0);
             image.Apply();
 
-            savePNG(image, "D:/RFTracker/DepthImagesStore/" + image_id + ".png");
+            savePNG(image, "D:/RFTracker/DepthImage/Assets/DepthImagesStore/" + image_id + ".png");
 
             image_id++;
             RenderTexture.active = currentRT; // restore 
         }
     }
+
+
     private void savePNG(Texture2D image, string path_file)
     {
         // store the texture into a .PNG file
@@ -50,18 +90,21 @@ public class SnapDepthCamera : MonoBehaviour {
 
         // save the encoded image to a file
         System.IO.File.WriteAllBytes(path_file, bytes);
+        SnapFlag = false;
     }
     
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("p"))
-        {
-            SnapFlag = true;
-            Debug.Log("save ");
-        }
-        else
-            SnapFlag = false;
 
+        //    if (Input.GetKeyDown("p"))
+        //    {
+        //        SnapFlag = true;
+        //        Debug.Log("save ");
+        //    }
+        //    else
+        //        SnapFlag = false;
+
+        //
     }
 }
