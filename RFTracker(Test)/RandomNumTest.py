@@ -16,6 +16,7 @@ for i in range(0, NvCount):
             RandTau.append(randint(0,8))
         for l in range(0, 3):
             RandTau.append(round(uniform(0.0, 360.0), 3))
+        RandTau.append(NrCount*i+j)
         print(RandTau)
         writer.writerow(RandTau)
         RandTau = []

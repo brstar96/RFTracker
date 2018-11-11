@@ -28,6 +28,8 @@ public class SnapDepthCamera : MonoBehaviour {
 
         string path = @"D:\RFTracker\DepthImage\Assets\RandomizedFiles";
         bunny = GameObject.Find("StanfordBunny");
+
+
         files = Directory.GetFiles(path, "*.csv");
 
         Vector3 vec = new Vector3(0,0,0);
@@ -35,9 +37,9 @@ public class SnapDepthCamera : MonoBehaviour {
 
         bunny.transform.Rotate(0, 0, 0);
 
-        for (int fileNo=0; fileNo < 1; fileNo++)
+        for (int fileNo=0; fileNo < 300; fileNo++)
         {
-            lines = File.ReadAllLines(files[fileNo]);
+            lines = File.ReadAllLines("D:/RFTracker/DepthImage/Assets/RandomizedFiles/RandomizeTest"+(fileNo + 1) +".csv");
             for (int lineNo = 0; lineNo < lines.Length; lineNo++)
             {
                 string[]colums = lines[lineNo].Split(',');
@@ -45,7 +47,7 @@ public class SnapDepthCamera : MonoBehaviour {
                 bunny.transform.position = new Vector3(float.Parse(colums[0]), float.Parse(colums[1]), float.Parse(colums[2]));
 
                 bunny.transform.localEulerAngles = new Vector3(float.Parse(colums[3]), float.Parse(colums[4]), float.Parse(colums[5]));
-                Debug.Log("fileNo"+fileNo+"lineNo:"+lineNo+"translate:"+ float.Parse(colums[0]) + ","+colums[1] + ","+colums[2] + "loate:" + float.Parse(colums[3])+","+ colums[4]+","+colums[5]);
+                Debug.Log("file Name : RandomizeTest"+(fileNo + 1)+".csv " +"lineNo : "+lineNo+"translate : "+ float.Parse(colums[0]) + ","+colums[1] + ","+colums[2] + "loate : " + float.Parse(colums[3])+","+ colums[4]+","+colums[5]+"RowNumber : " + colums[6]);
 
                 }
         }
