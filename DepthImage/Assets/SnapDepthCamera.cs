@@ -29,8 +29,11 @@ public class SnapDepthCamera : MonoBehaviour {
         string path = @"D:\RFTracker\DepthImage\Assets\RandomizedFiles";
         bunny = GameObject.Find("StanfordBunny");
         files = Directory.GetFiles(path, "*.csv");
-        
-        for (int fileNo=0; fileNo < files.Length; fileNo++)
+
+        bunny.transform.Translate(0, 0, 0);
+        bunny.transform.Rotate(0, 0, 0);
+
+        for (int fileNo=0; fileNo < 1; fileNo++)
         {
             lines = File.ReadAllLines(files[fileNo]);
             for (int lineNo = 0; lineNo < lines.Length; lineNo++)
@@ -40,8 +43,8 @@ public class SnapDepthCamera : MonoBehaviour {
                 bunny.transform.Translate(float.Parse(colums[0]), float.Parse(colums[1]), float.Parse(colums[2]));
 
                 bunny.transform.Rotate(float.Parse(colums[3]), float.Parse(colums[4]), float.Parse(colums[5]));
-                Debug.Log("fileNo"+fileNo+"lineNo:"+lineNo+"translate:"+ colums[0] +","+colums[1] + ","+colums[2] + "loate:" + colums[3]+","+ colums[4]+","+colums[5]);
-                Thread.Sleep(500);
+                Debug.Log("fileNo"+fileNo+"lineNo:"+lineNo+"translate:"+ float.Parse(colums[0]) + ","+colums[1] + ","+colums[2] + "loate:" + float.Parse(colums[3])+","+ colums[4]+","+colums[5]);
+
                 bunny.transform.Translate(0,0,0);
                 bunny.transform.Rotate(0,0,0);
             }
