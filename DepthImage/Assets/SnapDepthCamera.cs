@@ -5,7 +5,7 @@ using System.IO;
 using System;
 using System.Threading;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class SnapDepthCamera : MonoBehaviour {
     public Material mat;
     public int width = 512;
@@ -30,7 +30,9 @@ public class SnapDepthCamera : MonoBehaviour {
         bunny = GameObject.Find("StanfordBunny");
         files = Directory.GetFiles(path, "*.csv");
 
-        bunny.transform.Translate(0, 0, 0);
+        Vector3 vec = new Vector3(0,0,0);
+        bunny.transform.Translate(vec);
+
         bunny.transform.Rotate(0, 0, 0);
 
         for (int fileNo=0; fileNo < 1; fileNo++)
@@ -40,14 +42,12 @@ public class SnapDepthCamera : MonoBehaviour {
             {
                 string[]colums = lines[lineNo].Split(',');
                 
-                bunny.transform.Translate(float.Parse(colums[0]), float.Parse(colums[1]), float.Parse(colums[2]));
+                bunny.transform.position = new Vector3(float.Parse(colums[0]), float.Parse(colums[1]), float.Parse(colums[2]));
 
-                bunny.transform.Rotate(float.Parse(colums[3]), float.Parse(colums[4]), float.Parse(colums[5]));
+                bunny.transform.localEulerAngles = new Vector3(float.Parse(colums[3]), float.Parse(colums[4]), float.Parse(colums[5]));
                 Debug.Log("fileNo"+fileNo+"lineNo:"+lineNo+"translate:"+ float.Parse(colums[0]) + ","+colums[1] + ","+colums[2] + "loate:" + float.Parse(colums[3])+","+ colums[4]+","+colums[5]);
 
-                bunny.transform.Translate(0,0,0);
-                bunny.transform.Rotate(0,0,0);
-            }
+                }
         }
 
 
