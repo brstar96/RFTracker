@@ -313,9 +313,8 @@ GameObject:
   - component: {fileID: 1317520041}
   - component: {fileID: 1317520040}
   - component: {fileID: 1317520043}
-  - component: {fileID: 1317520044}
   m_Layer: 0
-  m_Name: TestDepth
+  m_Name: DepthCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -395,17 +394,6 @@ MonoBehaviour:
   mat: {fileID: 2100000, guid: e7512128ceaeccf40b96f2a0cb75f32b, type: 2}
   width: 512
   height: 512
---- !u!114 &1317520044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1317520039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa6c5ea23287ea64f9b42abf5bbb307e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   target: {fileID: 1703831522}
 --- !u!1001 &1370392870
 Prefab:
@@ -448,7 +436,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 72a3a3a9175111943a82f06e87979d87, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72a3a3a9175111943a82f06e87979d87, type: 3}
@@ -487,8 +475,9 @@ MonoBehaviour:
   target: {fileID: 1703831522}
   width: 512
   height: 512
-  files: []
-  lines: []
+  BunnyPositionFileLines: []
+  CameraPositionFileLines: []
+  CameraPosition: []
 --- !u!114 &1536167437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,6 +492,7 @@ MonoBehaviour:
   mat: {fileID: 2100000, guid: e7512128ceaeccf40b96f2a0cb75f32b, type: 2}
   width: 512
   height: 512
+  target: {fileID: 1703831522}
 --- !u!81 &1536167438
 AudioListener:
   m_ObjectHideFlags: 0
