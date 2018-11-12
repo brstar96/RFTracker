@@ -52,7 +52,7 @@ public class SnapDepthCamera : MonoBehaviour {
             Texture2D image = new Texture2D(destination.width, destination.height, TextureFormat.RGB24, false);
             image.ReadPixels(new Rect(0, 0, destination.width, destination.height), 0, 0);
             image.Apply();
-            savePNG(image, "D:/RFTracker/DepthImage/Assets/DepthImagesStore/" + image_id + ".png");
+            savePNG(image, @"D:/RFTracker/DepthImage/Assets/DepthImagesStore" + image_id + ".png");
             image_id++;
             RenderTexture.active = currentRT; // restore 
         }
@@ -101,7 +101,7 @@ public class SnapDepthCamera : MonoBehaviour {
                 writer.WriteLine("displacement," + colums[0] + "," + colums[1] + "," + colums[2] + "," + colums[3] + "," + colums[4] + "," + colums[5] + "," + colums[6]);
                 bunny.transform.localEulerAngles = new Vector3(float.Parse(colums[3]), float.Parse(colums[4]), float.Parse(colums[5]));
                 Debug.Log("file Name : RandomizeTest" + (CameraPositionLineNO + 1) + ".csv " + "lineNo : " + BunnyPositionLineNo + "translate : " + float.Parse(colums[0]) + "," + colums[1] + "," + colums[2] + "loate : " + float.Parse(colums[3]) + "," + colums[4] + "," + colums[5] + "RowNumber : " + colums[6]);
-                SnapFlag = false;
+                SnapFlag = true;
                 yield return new WaitForSeconds(0.000001f);
             }           
 
