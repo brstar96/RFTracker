@@ -30,7 +30,7 @@ public class SnapDepthCamera : MonoBehaviour {
         rt = new RenderTexture(width, height, 24);  // 24 bit depth
         cam.targetTexture = rt;
         writer = new StreamWriter(@"./Assets/datasets.csv");     
-        bunny = GameObject.Find("StanfordBunny");
+        bunny = GameObject.Find("Bunny");
         writer.WriteLine("displacement,Tx,Ty,Tz,Rx,Ry,Rz");
         StartCoroutine("RunMove");
 
@@ -81,17 +81,17 @@ public class SnapDepthCamera : MonoBehaviour {
         for (int fileNo = 0; fileNo < 1; fileNo++)
         {
             lines = File.ReadAllLines("D:/RFTracker/DepthImage/Assets/RandomizedFiles/RandomizeTest" + (fileNo + 1) + ".csv");
-            for (int lineNo = 0; lineNo < 10; lineNo++)
+            for (int lineNo = 0; lineNo < 30; lineNo++)
             {
                 string[] colums = lines[lineNo].Split(',');
                
                
-                bunny.transform.position = new Vector3(float.Parse(colums[0]), float.Parse(colums[1]), float.Parse(colums[2]));
+                bunny.transform.position = new Vector3(float.Parse(colums[0])/10, float.Parse(colums[1])/10, float.Parse(colums[2])/10);
                 writer.WriteLine("displacement," + colums[0] + "," + colums[1] + "," + colums[2] + "," + colums[3] + "," + colums[4] + "," + colums[5] + "," + colums[6]);
                 bunny.transform.localEulerAngles = new Vector3(float.Parse(colums[3]), float.Parse(colums[4]), float.Parse(colums[5]));
                 Debug.Log("file Name : RandomizeTest" + (fileNo + 1) + ".csv " + "lineNo : " + lineNo + "translate : " + float.Parse(colums[0]) + "," + colums[1] + "," + colums[2] + "loate : " + float.Parse(colums[3]) + "," + colums[4] + "," + colums[5] + "RowNumber : " + colums[6]);
                 SnapFlag = false;
-                yield return new WaitForSeconds(0.00005f);
+                yield return new WaitForSeconds(0.5f);
             }           
 
         }
