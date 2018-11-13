@@ -13,7 +13,7 @@ for i in range(0, NvCount):
     writer = csv.writer(csvfile)
     for j in range(0, NrCount):
         for k in range(0, 3):
-            RandTau.append(randrange(-4,4))
+            RandTau.append(round(uniform(-0.5,0.5),2))
         for l in range(0, 3):
             RandTau.append(round(uniform(0.0, 360.0), 3))
         RandTau.append(NrCount*i+j)
