@@ -64,7 +64,7 @@
     <Compile Include="Assets\bunny_Scrpt.cs" />
     <Compile Include="Assets\DepthCamera.cs" />
     <Compile Include="Assets\lookat.cs" />
-    <Compile Include="Assets\MeshGenerationDemo.cs" />
+    <Compile Include="Assets\MeshGeneration.cs" />
     <Compile Include="Assets\Reconstructor.cs" />
     <Compile Include="Assets\SnapDepthCamera.cs" />
     <None Include="Assets\Shader.shader" />
