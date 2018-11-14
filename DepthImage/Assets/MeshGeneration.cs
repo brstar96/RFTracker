@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 public class MeshGeneration : MonoBehaviour
 {
-
     void Start()
     {
         CreateCube();
@@ -15,7 +14,7 @@ public class MeshGeneration : MonoBehaviour
     private void CreateCube()
     {
         Vector3[] vertices = {
-            new Vector3 (0, 0, 0),
+            new Vector3 (1, 1, 1),
             new Vector3 (1, 0, 0),
             new Vector3 (1, 1, 0),
             new Vector3 (0, 1, 0),
@@ -24,7 +23,7 @@ public class MeshGeneration : MonoBehaviour
             new Vector3 (1, 0, 1),
             new Vector3 (0, 0, 1),
         };
-
+        
         int[] triangles = {
             0, 2, 1, //face front
 			0, 3, 2,
@@ -40,11 +39,17 @@ public class MeshGeneration : MonoBehaviour
 			0, 1, 6
         };
 
+        int[] Test ={
+            0,1,2,
+        };
+
         Mesh mesh = GetComponent<MeshFilter>().mesh;
         mesh.Clear();
+        //mesh.vertices = vertices;
+        //mesh.triangles = triangles;
         mesh.vertices = vertices;
-        mesh.triangles = triangles;
-        ;
-        mesh.RecalculateNormals();
+        mesh.triangles= Test;
+       
+
     }
 }
