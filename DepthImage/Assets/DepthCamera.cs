@@ -14,7 +14,8 @@ public class DepthCamera : MonoBehaviour {
     void Start () {
         cam = GetComponent<Camera>();   //获取当前绑定到脚本的相机
 
-        cam.depthTextureMode = DepthTextureMode.Depth;
+        cam.depthTextureMode = DepthTextureMode.DepthNormals;
+        rt = new RenderTexture(width, height, 32);  // 32 bit depth
 
     }
     void OnRenderImage(RenderTexture source, RenderTexture destination)
@@ -27,4 +28,8 @@ public class DepthCamera : MonoBehaviour {
     void Update () {
         transform.LookAt(target);
 	}
+
+    
 }
+
+  

@@ -5,18 +5,21 @@ using System.IO;
 
 
 public class SnapDepthCamera : MonoBehaviour {
-    public float MovingSpeed=0.005f;
-    public Material mat;
     private Camera cam;
     private RenderTexture rt;
     private GameObject bunny,DepthCamera;
-    public Transform target;
-
-    public int width = 512;
-    public int height = 512;
     private int image_id = 0;
     private bool SnapFlag = false;
-   // public string[] files;
+
+    public Transform target;
+    public Material mat;
+    public float MovingSpeed = 0.005f;
+    public int width = 512;
+    public int height = 512;
+    string[] colums;
+    byte[] bytes;
+
+    // public string[] files;
     public string[] BunnyPositionFileLines,CameraPositionFileLines,CameraPosition;
     StreamWriter writer;
 
@@ -27,7 +30,7 @@ public class SnapDepthCamera : MonoBehaviour {
          * 
          * **/
         cam = GetComponent<Camera>();   //获取当前绑定到脚本的相机
-        cam.depthTextureMode = DepthTextureMode.Depth;
+        cam.depthTextureMode = DepthTextureMode.DepthNormals;
         rt = new RenderTexture(width, height, 32);  // 32 bit depth
         cam.targetTexture = rt;
         writer = new StreamWriter(@"./Assets/datasets.csv");     
@@ -63,17 +66,13 @@ public class SnapDepthCamera : MonoBehaviour {
 
     private void savePNG(Texture2D image, string path_file)
     {
-        // store the texture into a .PNG file
-        byte[] bytes = image.EncodeToPNG();
+                bytes = image.EncodeToPNG();
        
 
-        // save the encoded image to a file
         System.IO.File.WriteAllBytes(path_file, bytes);
         SnapFlag = false;
-        Debug.Log("randomize file saved");
-        //bunny.transform.position = new Vector3(0, 0, 0);
-        //bunny.transform.localEulerAngles = new Vector3(0, 0, 0);
-
+        //  Debug.Log("randomize file saved");
+        
     }
 
 
@@ -93,9 +92,9 @@ public class SnapDepthCamera : MonoBehaviour {
 
            // Debug.LogWarning("camera moved ");
             BunnyPositionFileLines = File.ReadAllLines("D:/RFTracker/DepthImage/Assets/RandomizedFiles/RandomizeTest" + (CameraPositionLineNO + 1) + ".csv");
-            for (int BunnyPositionLineNo = 0; BunnyPositionLineNo < 1; BunnyPositionLineNo++)
+            for (int BunnyPositionLineNo = 0; BunnyPositionLineNo < 2500; BunnyPositionLineNo++)
             {
-                string[] colums = BunnyPositionFileLines[BunnyPositionLineNo].Split(',');
+                colums = BunnyPositionFileLines[BunnyPositionLineNo].Split(',');
                
                
                 bunny.transform.position = new Vector3(float.Parse(colums[0])/2, float.Parse(colums[1])/2,float.Parse(colums[2])/2);
