@@ -5,7 +5,7 @@ using System.IO;
 
 
 public class SnapDepthCamera : MonoBehaviour {
-    public float MovingSpeed=0.05f;
+    public float MovingSpeed=0.005f;
     public Material mat;
     private Camera cam;
     private RenderTexture rt;
@@ -91,7 +91,7 @@ public class SnapDepthCamera : MonoBehaviour {
             this.transform.position = new Vector3(float.Parse(CameraPosition[0]), float.Parse(CameraPosition[1]), float.Parse(CameraPosition[2]));
             DepthCamera.transform.position = new Vector3(float.Parse(CameraPosition[0]), float.Parse(CameraPosition[1]), float.Parse(CameraPosition[2]));
 
-            Debug.LogWarning("camera moved ");
+           // Debug.LogWarning("camera moved ");
             BunnyPositionFileLines = File.ReadAllLines("D:/RFTracker/DepthImage/Assets/RandomizedFiles/RandomizeTest" + (CameraPositionLineNO + 1) + ".csv");
             for (int BunnyPositionLineNo = 0; BunnyPositionLineNo < 1; BunnyPositionLineNo++)
             {
@@ -101,7 +101,7 @@ public class SnapDepthCamera : MonoBehaviour {
                 bunny.transform.position = new Vector3(float.Parse(colums[0])/2, float.Parse(colums[1])/2,float.Parse(colums[2])/2);
                 writer.WriteLine("displacement," + colums[0] + "," + colums[1] + "," + colums[2] + "," + colums[3] + "," + colums[4] + "," + colums[5] + "," + colums[6]);
                 bunny.transform.localEulerAngles = new Vector3(float.Parse(colums[3]), float.Parse(colums[4]), float.Parse(colums[5]));
-                Debug.Log("ImageNo:  "+image_id+"file Name : RandomizeTest" + (CameraPositionLineNO + 1) + ".csv " + "lineNo : " + BunnyPositionLineNo + "translate : " + float.Parse(colums[0]) + "," + colums[1] + "," + colums[2] + "loate : " + float.Parse(colums[3]) + "," + colums[4] + "," + colums[5] + "RowNumber : " + colums[6]+"camarePosition"+ CameraPosition[0]+"  :  "+ CameraPosition[1]+"  :  "+CameraPosition[2]);
+                Debug.Log("ImageNo:  "+image_id+"   file Name : RandomizeTest" + (CameraPositionLineNO + 1) + ".csv " + "   lineNo : " + BunnyPositionLineNo + "   translate : " + float.Parse(colums[0]) + "," + colums[1] + "," + colums[2] + "  rotate : " + float.Parse(colums[3]) + "," + colums[4] + "," + colums[5] + "RowNumber : " + colums[6]+"  camarePosition  "+ CameraPosition[0]+"  :  "+ CameraPosition[1]+"  :  "+CameraPosition[2]);
                 SnapFlag = true;
                 
 
