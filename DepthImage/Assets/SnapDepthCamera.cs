@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
+using System;
 
 public class SnapDepthCamera : MonoBehaviour {
     private Camera cam;
@@ -19,11 +19,10 @@ public class SnapDepthCamera : MonoBehaviour {
     string[] colums;
     byte[] bytes;
 
-    // public string[] files;
+    
     public string[] BunnyPositionFileLines,CameraPositionFileLines,CameraPosition;
     StreamWriter writer;
 
-    // Use this for initialization
     void Start () {
         /**
          * 뎁스 이미지 받기
@@ -38,8 +37,8 @@ public class SnapDepthCamera : MonoBehaviour {
         bunny = GameObject.Find("Bunny");
         DepthCamera = GameObject.Find("DepthCamera");
 
-
         writer.WriteLine("displacement,Tx,Ty,Tz,Rx,Ry,Rz");
+
         StartCoroutine("RunMove");
 
     }
@@ -60,19 +59,22 @@ public class SnapDepthCamera : MonoBehaviour {
             savePNG(image, @"D:/DepthTestImgs/" + image_id + ".png");
             image_id++;
             RenderTexture.active = currentRT; // restore 
+            Destroy(image);
+            image = null;
         }
     }
 
 
     private void savePNG(Texture2D image, string path_file)
     {
-                bytes = image.EncodeToPNG();
+
+        bytes = image.EncodeToPNG();
        
 
         System.IO.File.WriteAllBytes(path_file, bytes);
+
+
         SnapFlag = false;
-        //  Debug.Log("randomize file saved");
-        
     }
 
 
@@ -90,26 +92,22 @@ public class SnapDepthCamera : MonoBehaviour {
             this.transform.position = new Vector3(float.Parse(CameraPosition[0]), float.Parse(CameraPosition[1]), float.Parse(CameraPosition[2]));
             DepthCamera.transform.position = new Vector3(float.Parse(CameraPosition[0]), float.Parse(CameraPosition[1]), float.Parse(CameraPosition[2]));
 
-           // Debug.LogWarning("camera moved ");
+            // Debug.LogWarning("camera moved ");
             BunnyPositionFileLines = File.ReadAllLines("D:/RFTracker/DepthImage/Assets/RandomizedFiles/RandomizeTest" + (CameraPositionLineNO + 1) + ".csv");
             for (int BunnyPositionLineNo = 0; BunnyPositionLineNo < 2500; BunnyPositionLineNo++)
             {
                 colums = BunnyPositionFileLines[BunnyPositionLineNo].Split(',');
-               
-               
-                bunny.transform.position = new Vector3(float.Parse(colums[0])/2, float.Parse(colums[1])/2,float.Parse(colums[2])/2);
+                bunny.transform.position = new Vector3(float.Parse(colums[0]) / 2, float.Parse(colums[1]) / 2, float.Parse(colums[2]) / 2);
                 writer.WriteLine("displacement," + colums[0] + "," + colums[1] + "," + colums[2] + "," + colums[3] + "," + colums[4] + "," + colums[5] + "," + colums[6]);
                 bunny.transform.localEulerAngles = new Vector3(float.Parse(colums[3]), float.Parse(colums[4]), float.Parse(colums[5]));
-                Debug.Log("ImageNo:  "+image_id+"   file Name : RandomizeTest" + (CameraPositionLineNO + 1) + ".csv " + "   lineNo : " + BunnyPositionLineNo + "   translate : " + float.Parse(colums[0]) + "," + colums[1] + "," + colums[2] + "  rotate : " + float.Parse(colums[3]) + "," + colums[4] + "," + colums[5] + "RowNumber : " + colums[6]+"  camarePosition  "+ CameraPosition[0]+"  :  "+ CameraPosition[1]+"  :  "+CameraPosition[2]);
+               // Debug.Log("ImageNo:  " + image_id + "   file Name : RandomizeTest" + (CameraPositionLineNO + 1) + ".csv " + "   lineNo : " + BunnyPositionLineNo + "   translate : " + float.Parse(colums[0]) + "," + colums[1] + "," + colums[2] + "  rotate : " + float.Parse(colums[3]) + "," + colums[4] + "," + colums[5] + "RowNumber : " + colums[6] + "  camarePosition  " + CameraPosition[0] + "  :  " + CameraPosition[1] + "  :  " + CameraPosition[2]);
+               
+                yield return null;
+
                 SnapFlag = true;
-                
-
-                yield return new WaitForSeconds(MovingSpeed);
-            }           
-
+            }
         }
-
-
         writer.Close();  
     }
+
 }

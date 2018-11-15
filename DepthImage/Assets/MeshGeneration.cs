@@ -21,16 +21,16 @@ public class MeshGeneration : MonoBehaviour
             vertices[i] = new Vector3(0,0,0);
         }
 
-        Texture2D GrayscaleImg = new Texture2D(512, 512, TextureFormat.RGBA32, false);
-        string PATH = "DepthSampleImgs/31.png";
-        GrayscaleImg = Resources.Load(PATH, typeof(Texture2D)) as Texture2D;
-        byte[] bytes = new byte[512*512];
-        GrayscaleImg.LoadImage(bytes);
-        
-        for(int i = 0; i < 512; i++)
-        {
-            Debug.Log(bytes[i]);
-        }
+        //Texture2D GrayscaleImg = new Texture2D(512, 512, TextureFormat.RGBA32, false);
+        //string PATH = "DepthSampleImgs/31.png";
+        //GrayscaleImg = Resources.Load(PATH, typeof(Texture2D)) as Texture2D;
+        //byte[] bytes = new byte[512*512];
+        //GrayscaleImg.LoadImage(bytes);
+
+        //for(int i = 0; i < 512; i++)
+        //{
+        //    Debug.Log(bytes[i]);
+        //}
 
 
         //Stream imageStreamSource = new FileStream("smiley.png", FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -50,6 +50,9 @@ public class MeshGeneration : MonoBehaviour
         //    new Vector3 (1, 0, 1),
         //    new Vector3 (0, 0, 1),
         //};
+        string []lines = File.ReadAllLines("D:/DepthTestImgs/196.png");
+        
+        Debug.Log(lines[0]);
 
         int[] triangles = {
             0, 2, 1, //face front
