@@ -24,28 +24,33 @@ public class MeshGeneration : MonoBehaviour
             vertices[i] = new Vector3(0, 0, 0);
         }
 
+        List<Vector2> list = new List<Vector2>();
+
         Texture2D GrayscaleImg = new Texture2D(512, 512, TextureFormat.RGBA32, false);
         byte[] bytes = new byte[512 * 512];
         Texture2D testtex = LoadPNG(PATH);
-        Color[] pixcels = testtex.GetPixels(0,0,512,512);
-        Debug.Log("length: "+pixcels.Length);
-        for(int i=0;i<pixcels.Length;i++)
+        for (int height = 0; height < 512; height++)
         {
-            if(pixcels[i].r > 0)
+            for (int width = 0; width < 512; width++)
             {
-
+                Color pixcels = testtex.GetPixel(height, width);
+                if (pixcels.r > 0)
+                {
+                    list.Add(new Vector2(height, width));
+                }
             }
         }
-
+        for (int i =0;i<sizeof(); i++)
+        {
+        Debug.Log(list[3]);
+        }
     }
-
+            
     public Texture2D LoadPNG(string filePath)
     {
         Texture2D tex = null;
         byte[] fileData;
-        int[] Test ={
-            0,1,2
-        };
+        
         if (File.Exists(filePath))
         {
             fileData = File.ReadAllBytes(filePath);
@@ -55,6 +60,7 @@ public class MeshGeneration : MonoBehaviour
         return tex;
         //Destroy(tex);
     }
+
 }
 
 
