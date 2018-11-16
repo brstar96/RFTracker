@@ -19,15 +19,15 @@ public class MeshGeneration : MonoBehaviour
     {
         //allocate 20 Vector3 variables('vertices') for vertex making
         Vector3[] vertices = new Vector3[20];
-
+        GameObject spheere = GameObject.Find("Sphere");
         //Iterate 20 times to store vertex data to 'verices' variable. 
         for (int i = 0; i < 20; i++)
         {
             vertices[i] = new Vector3(0, 0, 0);
         }
 
-        List<Vector3> list = new List<Vector3>();
-        List<Vector3> list2 = new List<Vector3>();
+        List<Vector3> grayScalePixcels = new List<Vector3>();
+        List<Vector3> vertexPositions = new List<Vector3>();
 
         Texture2D GrayscaleImg = new Texture2D(512, 512, TextureFormat.RGBA32, false); //allocate memory for 2D texture image
         byte[] bytes = new byte[512 * 512]; //allocate byte variable for Image
@@ -43,15 +43,18 @@ public class MeshGeneration : MonoBehaviour
                 pixcels = testtex.GetPixel(height, width);
                 if (pixcels.r < 1) //this operation must be execute when 'pixcels' have non-zero value. 
                 {
-                    list.Add(new Vector3(height, width, pixcels.r));
+                    grayScalePixcels.Add(new Vector3(height, width, pixcels.r));
                 }
             }
         }
-        list2.Add(new Vector3(list[3].x/512,list[3].y/512, list[3].z));
-        Debug.Log(list2[0].x +"  "+ list2[0].y + "  "+list2[0].z);
-        
+        for (int count = 0; count < grayScalePixcels.Count; count++)
+        {
+            vertexPositions.Add(new Vector3(grayScalePixcels[count].x, grayScalePixcels[count].y, grayScalePixcels[count].z));
+        }
+        Debug.Log(grayScalePixcels[3].x + "  " + grayScalePixcels[3].y + "  " + grayScalePixcels[3].z);
+        Debug.Log(vertexPositions[3].x/5.12 + "  " + vertexPositions[3].y/5.12 + "  " + vertexPositions[3].z/2.55);
     }
-            
+
     public Texture2D LoadPNG(string filePath)
     {
         Texture2D tex = null;

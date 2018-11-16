@@ -69,11 +69,7 @@ public class SnapDepthCamera : MonoBehaviour {
     {
 
         bytes = image.EncodeToPNG();
-
-        Debug.Log(bytes.Length);
         System.IO.File.WriteAllBytes(path_file, bytes);
-
-
         SnapFlag = false;
     }
 
@@ -92,7 +88,7 @@ public class SnapDepthCamera : MonoBehaviour {
             this.transform.position = new Vector3(float.Parse(CameraPosition[0]), float.Parse(CameraPosition[1]), float.Parse(CameraPosition[2]));
             DepthCamera.transform.position = new Vector3(float.Parse(CameraPosition[0]), float.Parse(CameraPosition[1]), float.Parse(CameraPosition[2]));
 
-            // Debug.LogWarning("camera moved ");
+            
             BunnyPositionFileLines = File.ReadAllLines("D:/RFTracker/DepthImage/Assets/RandomizedFiles/RandomizeTest" + (CameraPositionLineNO + 1) + ".csv");
             for (int BunnyPositionLineNo = 0; BunnyPositionLineNo < 1; BunnyPositionLineNo++)
             {
