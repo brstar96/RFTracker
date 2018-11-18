@@ -13,26 +13,25 @@ public class MeshGeneration : MonoBehaviour
 
     void Start()
     {
-        getDisplacement();
+        CreateCube();
     }
 
     private void CreateCube()
     {
         //allocate 20 Vector3 variables('vertices') for vertex making
         Vector3[] vertices = new Vector3[1800]; //랜덤하게 버텍스 20개를 뽑기 위한 변수 
-        List<GameObject> SphereList = new List<GameObject>(); //20개의 sphere 오브젝트를 만들기 위한 변수 
+        List<GameObject> SphereList = new List<GameObject>(); //backprojected sphere 오브젝트를 만들기 위한 변수 
         GameObject ins; //sphere 게임오브젝트 인스턴스 생성을 위한 변수 
         List<Vector3> grayScalePixcels = new List<Vector3>(); 
         List<Vector3> vertexPositions = new List<Vector3>(); 
         
-        //20개 sphere 만드는 루프문
-        for (int i = 0; i < 1800; i++)
+        //backprojected sphere 만드는 루프문(for visualization)
+        for (int i = 0; i < SphereList.Count; i++)
         {
             ins = GameObject.CreatePrimitive(PrimitiveType.Sphere); //sphere생성(10개)++
             ins.transform.localScale = new Vector3(0.0009f,0.0009f,0.0009f); ;
             SphereList.Add(ins);
             vertices[i] = new Vector3(0, 0, 0);
-            
         }
         
         Texture2D GrayscaleImg = new Texture2D(512, 512, TextureFormat.RGBA32, false); //allocate memory for 2D texture image
@@ -62,9 +61,7 @@ public class MeshGeneration : MonoBehaviour
         {
             //i번째 sphere를 backprojected position으로 transform
             SphereList[i].transform.position = new Vector3(vertexPositions[i].x, vertexPositions[i].y, vertexPositions[i].z*5);
-            //Debug.Log(SphereList[i].transform.position);
-            //SphereList[i].transform.position = new Vector3(1,2,3);
-            
+            getDisplacement(); //call 'getDisplacement' function for calculate displacement value per 'GT-backprojected vertex pair'. (11.18)
         }
     }
 
@@ -82,13 +79,15 @@ public class MeshGeneration : MonoBehaviour
         return tex;
         //Destroy(tex);
     }
-    public void getDisplacement()
+    public float getDisplacement(Vector3 v1, Vector3 v2)
     {
-        Vector3 a = new Vector3(2, 2, 2);
-        Vector3 b = new Vector3(1, 5, 9);
-
-        Debug.Log(Vector3.Distance(b, a));
-        Debug.Log(Vector3.Distance(a, b));
+        //v1 : Ground truth vertex position from original 'stanfordbunny.obj' file.
+        //v2 : back-projected vertex position from 'BackprojTest' unity scene.
+        //tree will learn the relationship between displacement scalar value & corresponding transformation parameter tau.
+        float tempDisplacement = 0;
+        
+        tempDisplacement = Vector3.Distance(v1, v2);
+        return tempDisplacement;
     }
 
 
