@@ -255,6 +255,38 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 679543193}
   m_Mesh: {fileID: 4300000, guid: 9fb3e1b2d4b1e664196f4d587c63bea7, type: 3}
+--- !u!1 &1147816687 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 72a3a3a9175111943a82f06e87979d87,
+    type: 3}
+  m_PrefabInternal: {fileID: 1370392870}
+--- !u!4 &1147816688 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 72a3a3a9175111943a82f06e87979d87,
+    type: 3}
+  m_PrefabInternal: {fileID: 1370392870}
+--- !u!114 &1147816689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1147816687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 247442469, guid: f7b54ff4a43d4fcf81b4538b678e0bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SurfaceParent: {fileID: 0}
+  m_FreezeUpdates: 0
+  m_VolumeType: 1
+  m_SphereRadius: 2
+  m_HalfBoxExtents: {x: 4, y: 4, z: 4}
+  m_LodType: 1
+  m_NumUpdatesBeforeRemoval: 10
+  m_SecondsBetweenUpdates: 2.5
+  m_Layer: 0
+  m_Material: {fileID: 0}
+  m_EnableCollisions: 1
 --- !u!1 &1317520039
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +359,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1317520039}
-  m_LocalRotation: {x: -0.23232126, y: -0.6484514, z: -0.21788281, w: 0.6914223}
+  m_LocalRotation: {x: 0.16847219, y: 0.8051808, z: 0.27153477, w: -0.49956977}
   m_LocalPosition: {x: 0.713, y: -0.6056, z: 0.3534}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -348,7 +380,7 @@ MonoBehaviour:
   mat: {fileID: 2100000, guid: e7512128ceaeccf40b96f2a0cb75f32b, type: 2}
   width: 512
   height: 512
-  target: {fileID: 679543194}
+  target: {fileID: 1147816688}
 --- !u!114 &1317520044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,7 +433,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 72a3a3a9175111943a82f06e87979d87, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 72a3a3a9175111943a82f06e87979d87, type: 3}
       propertyPath: m_LocalScale.x
@@ -448,7 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0189c121c385f7c4a8ff7f0a2c6d2e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 679543194}
+  target: {fileID: 1147816688}
   mat: {fileID: 2100000, guid: e7512128ceaeccf40b96f2a0cb75f32b, type: 2}
   MovingSpeed: 0.0001
   width: 512
@@ -470,7 +502,7 @@ MonoBehaviour:
   mat: {fileID: 2100000, guid: e7512128ceaeccf40b96f2a0cb75f32b, type: 2}
   width: 512
   height: 512
-  target: {fileID: 679543194}
+  target: {fileID: 1147816688}
 --- !u!81 &1536167438
 AudioListener:
   m_ObjectHideFlags: 0
@@ -524,7 +556,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1536167435}
-  m_LocalRotation: {x: 0.1544956, y: -0.22842528, z: 0.036741152, w: 0.96052235}
+  m_LocalRotation: {x: 0.38736576, y: -0.057078917, z: 0.024037153, w: 0.9198435}
   m_LocalPosition: {x: 0.0864, y: 0.7155, z: -0.6935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

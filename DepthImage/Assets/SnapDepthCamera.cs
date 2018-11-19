@@ -32,8 +32,8 @@ public class SnapDepthCamera : MonoBehaviour {
         cam.depthTextureMode = DepthTextureMode.DepthNormals;
         rt = new RenderTexture(width, height, 32);  // 32 bit depth
         cam.targetTexture = rt;
-        writer = new StreamWriter(@"./Assets/datasets.csv");     
-
+        writer = new StreamWriter(@"./Assets/datasets.csv");
+        target = GameObject.Find("GeoGrid").transform;
         bunny = GameObject.Find("Bunny");
         DepthCamera = GameObject.Find("DepthCamera");
 
@@ -69,31 +69,35 @@ public class SnapDepthCamera : MonoBehaviour {
     {
 
         bytes = image.EncodeToPNG();
+        Debug.Log("bytes value"+bytes[0]);
+
+
         System.IO.File.WriteAllBytes(path_file, bytes);
         SnapFlag = false;
     }
 
 
     void Update () {
-        transform.LookAt(target);
+        //transform.LookAt(target);
     }
 
     IEnumerator RunMove()
     {
         CameraPositionFileLines = File.ReadAllLines(@"D:/RFTracker/DepthImage/Assets/CamerePositions.txt");
 
-        for (int CameraPositionLineNO = 0; CameraPositionLineNO < 1; CameraPositionLineNO++)
+        for (int CameraPositionLineNO = 0; CameraPositionLineNO < 642; CameraPositionLineNO++)
         {
             CameraPosition = CameraPositionFileLines[CameraPositionLineNO].Split(' ');
             this.transform.position = new Vector3(float.Parse(CameraPosition[0]), float.Parse(CameraPosition[1]), float.Parse(CameraPosition[2]));
             DepthCamera.transform.position = new Vector3(float.Parse(CameraPosition[0]), float.Parse(CameraPosition[1]), float.Parse(CameraPosition[2]));
-
+            this.transform.LookAt(target.position);
+            DepthCamera.transform.LookAt(target.position);
             
             BunnyPositionFileLines = File.ReadAllLines("D:/RFTracker/DepthImage/Assets/RandomizedFiles/RandomizeTest" + (CameraPositionLineNO + 1) + ".csv");
-            for (int BunnyPositionLineNo = 0; BunnyPositionLineNo < 1; BunnyPositionLineNo++)
+            for (int BunnyPositionLineNo = 0; BunnyPositionLineNo < 20; BunnyPositionLineNo++)
             {
                 colums = BunnyPositionFileLines[BunnyPositionLineNo].Split(',');
-                bunny.transform.position = new Vector3(float.Parse(colums[0]), float.Parse(colums[1]) , float.Parse(colums[2]) );
+                bunny.transform.position = new Vector3(float.Parse(colums[0])/10, float.Parse(colums[1])/10 , float.Parse(colums[2])/10 );
                 writer.WriteLine("displacement," + colums[0] + "," + colums[1] + "," + colums[2] + "," + colums[3] + "," + colums[4] + "," + colums[5] + "," + colums[6]);
                 bunny.transform.localEulerAngles = new Vector3(float.Parse(colums[3]), float.Parse(colums[4]), float.Parse(colums[5]));
                 Debug.Log("ImageNo:  " + image_id + "   file Name : RandomizeTest" + (CameraPositionLineNO + 1) + ".csv " + "   lineNo : " + BunnyPositionLineNo + "   translate : " + float.Parse(colums[0]) + "," + colums[1] + "," + colums[2] + "  rotate : " + float.Parse(colums[3]) + "," + colums[4] + "," + colums[5] + "RowNumber : " + colums[6] + "  camarePosition  " + CameraPosition[0] + "  :  " + CameraPosition[1] + "  :  " + CameraPosition[2]);
