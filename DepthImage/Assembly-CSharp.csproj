@@ -65,9 +65,11 @@
     <Compile Include="Assets\CsScripts\bunny_Scrpt.cs" />
     <Compile Include="Assets\CsScripts\DepthCamera.cs" />
     <Compile Include="Assets\CsScripts\lookat.cs" />
+    <Compile Include="Assets\CsScripts\RenderDepth.cs" />
     <Compile Include="Assets\CsScripts\SnapDepthCamera.cs" />
     <None Include="Assets\Shader.shader" />
     <None Include="Assets\CamerePositions.txt" />
+    <None Include="Assets\RenderDepth.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/RFTracker/DepthImage/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

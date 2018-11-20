@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 199465557}
   - component: {fileID: 199465556}
   - component: {fileID: 199465555}
-  - component: {fileID: 199465554}
   - component: {fileID: 199465553}
   m_Layer: 0
   m_Name: DepthCamera
@@ -140,24 +139,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 199465552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4a5f9cbf386c74d8915418e8034533, type: 3}
+  m_Script: {fileID: 11500000, guid: 841b260e61ad43e4495dbe2e76aa0e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &199465554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 199465552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5217b434354fac4993288ab632bc9cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: e7512128ceaeccf40b96f2a0cb75f32b, type: 2}
-  width: 512
-  height: 512
-  target: {fileID: 1049330564}
+  depthLevel: 3
 --- !u!81 &199465555
 AudioListener:
   m_ObjectHideFlags: 0
@@ -187,7 +172,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 2
-  field of view: 90
+  field of view: 57
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -304,49 +289,13 @@ GameObject:
   - component: {fileID: 1516250005}
   - component: {fileID: 1516250004}
   - component: {fileID: 1516250003}
-  - component: {fileID: 1516250002}
-  - component: {fileID: 1516250001}
   m_Layer: 0
   m_Name: snap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1516250001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1516250000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0189c121c385f7c4a8ff7f0a2c6d2e76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  mat: {fileID: 2100000, guid: e7512128ceaeccf40b96f2a0cb75f32b, type: 2}
-  MovingSpeed: 0.0001
-  width: 512
-  height: 512
-  BunnyPositionFileLines: []
-  CameraPositionFileLines: []
-  CameraPosition: []
---- !u!114 &1516250002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1516250000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5217b434354fac4993288ab632bc9cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: e7512128ceaeccf40b96f2a0cb75f32b, type: 2}
-  width: 512
-  height: 512
-  target: {fileID: 1049330564}
+  m_IsActive: 0
 --- !u!81 &1516250003
 AudioListener:
   m_ObjectHideFlags: 0
