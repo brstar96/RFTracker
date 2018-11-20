@@ -33,7 +33,7 @@ public class SnapDepthCamera : MonoBehaviour {
         rt = new RenderTexture(width, height, 32);  // 32 bit depth
         cam.targetTexture = rt;
         writer = new StreamWriter(@"./Assets/datasets.csv");
-        target = GameObject.Find("GeoGrid").transform;
+        target = GameObject.Find("GeoSphere001").transform;
         bunny = GameObject.Find("Bunny");
         DepthCamera = GameObject.Find("DepthCamera");
 
