@@ -65,7 +65,6 @@
     <Compile Include="Assets\DepthCamera.cs" />
     <Compile Include="Assets\lookat.cs" />
     <Compile Include="Assets\MeshGeneration.cs" />
-    <Compile Include="Assets\meshGeneration1116_test1.cs" />
     <Compile Include="Assets\SnapDepthCamera.cs" />
     <None Include="Assets\Shader.shader" />
     <None Include="Assets\CamerePositions.txt" />

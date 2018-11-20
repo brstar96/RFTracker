@@ -12,7 +12,7 @@ public class DepthCamera : MonoBehaviour {
     private int image_id = 0;
     // Use this for initialization
     void Start () {
-        target = GameObject.Find("GeoGrid").transform;
+        target = GameObject.Find("GeoSphere001").transform;
         cam = GetComponent<Camera>();   //获取当前绑定到脚本的相机
         cam.depthTextureMode = DepthTextureMode.DepthNormals;
         rt = new RenderTexture(width, height, 32);  // 32 bit depth
