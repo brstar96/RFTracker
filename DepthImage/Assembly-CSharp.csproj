@@ -61,11 +61,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\bunny_Scrpt.cs" />
-    <Compile Include="Assets\DepthCamera.cs" />
-    <Compile Include="Assets\lookat.cs" />
-    <Compile Include="Assets\MeshGeneration.cs" />
-    <Compile Include="Assets\SnapDepthCamera.cs" />
+    <Compile Include="Assets\CsScripts\BackProjection.cs" />
+    <Compile Include="Assets\CsScripts\bunny_Scrpt.cs" />
+    <Compile Include="Assets\CsScripts\DepthCamera.cs" />
+    <Compile Include="Assets\CsScripts\lookat.cs" />
+    <Compile Include="Assets\CsScripts\SnapDepthCamera.cs" />
     <None Include="Assets\Shader.shader" />
     <None Include="Assets\CamerePositions.txt" />
     <Reference Include="UnityEditor.StandardEvents">
