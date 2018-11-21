@@ -33,13 +33,13 @@ public class BackProjection : MonoBehaviour
         }
         for (int count = 0; count < grayScalePixcels.Count; count++)
         {
-            vertexPositions.Add(new Vector3(grayScalePixcels[count].x / 512f, grayScalePixcels[count].y / 512f, grayScalePixcels[count].z / 5.12f));
+            vertexPositions.Add(new Vector3(grayScalePixcels[count].x / 512f, grayScalePixcels[count].y / 512f, grayScalePixcels[count].z / 2.55f));
         }
 
         for (int j = 0; j < SphereList.Count; j++)
         {
             //SphereList[j].transform.position = new Vector3(vertexPositions[j].x, vertexPositions[j].y, vertexPositions[j].z);
-            SphereList[j].transform.position = new Vector3(vertexPositions[j].x, vertexPositions[j].y, vertexPositions[j].z * 5);
+            SphereList[j].transform.position = new Vector3(vertexPositions[j].x-0.5f, vertexPositions[j].y-0.5f, (vertexPositions[j].z * 2.5f)-0.5f);
            // getDisplacement(); //call 'getDisplacement' function for calculate displacement value per 'GT-backprojected vertex pair'. (11.18)
         }
 
@@ -64,7 +64,7 @@ public class BackProjection : MonoBehaviour
             for (int width = 0; width < 512; width++)
             {
                 pixcels = tex.GetPixel(height, width);
-                if (pixcels.r < 1)
+                if (pixcels.r <1)
                 {
                     grayScalePixcels.Add(new Vector3(height, width, pixcels.r));
                 }

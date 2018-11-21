@@ -17,7 +17,7 @@ public class Z_axis_SnapCam_scrp : MonoBehaviour {
 	void Start () {
         cam = GetComponent<Camera>();   //获取当前绑定到脚本的相机
 
-        cam.depthTextureMode = DepthTextureMode.Depth;
+        //cam.depthTextureMode = DepthTextureMode.Depth;
 
         rt = new RenderTexture(width, height, 24);  // 24 bit depth
         cam.targetTexture = rt;
