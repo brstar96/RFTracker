@@ -38,9 +38,9 @@ public class BackProjection : MonoBehaviour
 
         for (int j = 0; j < SphereList.Count; j++)
         {
-            SphereList[j].transform.position = new Vector3(vertexPositions[j].x, vertexPositions[j].y, vertexPositions[j].z);
+            //SphereList[j].transform.position = new Vector3(vertexPositions[j].x, vertexPositions[j].y, vertexPositions[j].z);
             SphereList[j].transform.position = new Vector3(vertexPositions[j].x, vertexPositions[j].y, vertexPositions[j].z * 5);
-            getDisplacement(); //call 'getDisplacement' function for calculate displacement value per 'GT-backprojected vertex pair'. (11.18)
+           // getDisplacement(); //call 'getDisplacement' function for calculate displacement value per 'GT-backprojected vertex pair'. (11.18)
         }
 
     }
@@ -82,8 +82,8 @@ public class BackProjection : MonoBehaviour
     {
         Vector3 a = new Vector3(2, 2, 2);
         Vector3 b = new Vector3(1, 5, 9);
-        Debug.Log(Vector3.Distance(b, a));
-        Debug.Log(Vector3.Distance(a, b));
+        //Debug.Log(Vector3.Distance(b, a));
+        //Debug.Log(Vector3.Distance(a, b));
     }
 
     public float getDisplacement(Vector3 v1, Vector3 v2)
