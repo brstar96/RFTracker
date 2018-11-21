@@ -2,76 +2,48 @@
 using System.Collections.Generic;
 using System.IO;
 
-public class MeshGeneration : MonoBehaviour
+public class BackProjection : MonoBehaviour
 {
     string PATH = "D:/DepthTestImgs/0.png";
-
-
+    
     void Start()
     {
-        BackProjection();
+        BackProj();
     }
 
-    private void BackProjection()
+    private void BackProj()
     {
         GameObject obj = GameObject.Find("empty");
 
-        List<GameObject> SphereList = new List<GameObject>(); //20개의 sphere 오브젝트를 만들기 위한 변수 
+        List<GameObject> SphereList = new List<GameObject>(); //20개의 sphere 오브젝트를 만들기 위한 변수
+        CreateCube();
     }
-       
+
     private void CreateCube()
     {
-        //allocate 20 Vector3 variables('vertices') for vertex making
-        Vector3[] vertices = new Vector3[1800]; //랜덤하게 버텍스 20개를 뽑기 위한 변수 
-        List<GameObject> SphereList = new List<GameObject>(); //backprojected sphere 오브젝트를 만들기 위한 변수 
-
-        GameObject ins; //sphere 게임오브젝트 인스턴스 생성을 위한 변수 
+        List<GameObject> SphereList = new List<GameObject>();
         List<Vector3> vertexPositions = new List<Vector3>();
-
-        byte[] bytes = new byte[512 * 512]; //allocate byte variable for Image
-
         List<Vector3> grayScalePixcels = loadGrayScalePNG(PATH); //loading image from 'PATH' and store to 'testtex' Texture2D variable. 
-        //20개 sphere 만드는 루프문
-        for (int i = 0; i < grayScalePixcels.Count; i++)
+        GameObject singleSphere;
+        for (int j = 0; j < grayScalePixcels.Count; j++)
         {
-
-
-            //backprojected sphere 만드는 루프문(for visualization)
-            for (int j = 0; j < SphereList.Count; j++)
-            {
-
-                ins = GameObject.CreatePrimitive(PrimitiveType.Sphere); //sphere생성(10개)++
-
-                ins.transform.localScale = new Vector3(0.0009f, 0.0009f, 0.0009f);
-                SphereList.Add(ins);
-
-                vertices[j] = new Vector3(0, 0, 0);
-
-            }
-
-
-            for (int count = 0; count < grayScalePixcels.Count; count++)
-            {
-                vertexPositions.Add(new Vector3(grayScalePixcels[count].x / 512f, grayScalePixcels[count].y / 512f, grayScalePixcels[count].z / 5.12f));
-            }
-
-            for (int j = 0; j < SphereList.Count; j++)
-            {
-                //i번째 sphere를 backprojected position으로 transform
-
-                SphereList[j].transform.position = new Vector3(vertexPositions[j].x, vertexPositions[j].y, vertexPositions[j].z);
-
-
-                SphereList[j].transform.position = new Vector3(vertexPositions[j].x, vertexPositions[j].y, vertexPositions[j].z * 5);
-                getDisplacement(); //call 'getDisplacement' function for calculate displacement value per 'GT-backprojected vertex pair'. (11.18)
-
-            }
+            singleSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            singleSphere.transform.localScale = new Vector3(0.0009f, 0.0009f, 0.0009f);
+            SphereList.Add(singleSphere);
         }
+        for (int count = 0; count < grayScalePixcels.Count; count++)
+        {
+            vertexPositions.Add(new Vector3(grayScalePixcels[count].x / 512f, grayScalePixcels[count].y / 512f, grayScalePixcels[count].z / 5.12f));
+        }
+
+        for (int j = 0; j < SphereList.Count; j++)
+        {
+            SphereList[j].transform.position = new Vector3(vertexPositions[j].x, vertexPositions[j].y, vertexPositions[j].z);
+            SphereList[j].transform.position = new Vector3(vertexPositions[j].x, vertexPositions[j].y, vertexPositions[j].z * 5);
+            getDisplacement(); //call 'getDisplacement' function for calculate displacement value per 'GT-backprojected vertex pair'. (11.18)
+        }
+
     }
-
-
-
-
 
     public List<Vector3> loadGrayScalePNG(string filePath)
     {

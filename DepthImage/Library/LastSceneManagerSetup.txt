@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/DatasetRender2(1120).unity
+- path: Assets/Scenes/Z_axis_Back.unity
   isLoaded: 1
   isActive: 1
