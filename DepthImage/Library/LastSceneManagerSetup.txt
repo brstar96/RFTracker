@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Scenes/DatasetRender(1122).unity
-  isLoaded: 1
-  isActive: 1
