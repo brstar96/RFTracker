@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CsScripts\BackProjection.cs" />
+    <Compile Include="Assets\CsScripts\BackProjection_1122.cs" />
     <Compile Include="Assets\CsScripts\bunny_Scrpt.cs" />
     <Compile Include="Assets\CsScripts\DepthCamera.cs" />
     <Compile Include="Assets\CsScripts\lookat.cs" />

@@ -15,14 +15,16 @@ public class BackProjection : MonoBehaviour
     {
         GameObject obj = GameObject.Find("empty");
 
-        List<GameObject> SphereList = new List<GameObject>(); //20개의 sphere 오브젝트를 만들기 위한 변수
-        CreateCube();
+        List<GameObject> SphereList = new List<GameObject>(); //20개의 sphere 오브젝트를 만들기 위한 리스트
+        Backprojection();
     }
 
-    private void CreateCube()
+    private void Backprojection()
     {
-        List<GameObject> SphereList = new List<GameObject>();
-        List<Vector3> vertexPositions = new List<Vector3>();
+        List<GameObject> SphereList = new List<GameObject>(); //게임씬에 Sphere를 생성하기 위한 리스트
+        List<Vector3> vertexPositions = new List<Vector3>(); //backprojection을 수행하기 위한 리스트
+        List<int> ShuffledVerts = new List<int>(20); //Nj(20개) vertices를 뽑기 위한 임시 리스트
+
         List<Vector3> grayScalePixcels = loadGrayScalePNG(PATH); //loading image from 'PATH' and store to 'testtex' Texture2D variable. 
         GameObject singleSphere;
         for (int j = 0; j < grayScalePixcels.Count; j++)
@@ -77,6 +79,22 @@ public class BackProjection : MonoBehaviour
         grayScalePixcels = null;
         fileData = null;
     }
+
+    //public static void ListShuffle<T>(this IList<T> list)
+    //{
+    //    //Random random = new Random(); //Random클래스로부터 새 random 클래스 객체 생성
+    //    int n = list.Count; //받아온 list의 길이를 저장
+
+    //    for(int i=list.Count -1;i>1;i--)
+    //    {
+    //        int rnd = Random.Range(0, i + 1); //0부터 리스트길이만큼의 범위 사이에서 random int 생성
+
+    //        T value = list[rnd];
+    //        list[rnd] = list[i];
+    //        list[i] = value;
+
+    //    }
+    //}
 
     public void getDisplacement()
     {
