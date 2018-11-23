@@ -67,7 +67,13 @@
     <Compile Include="Assets\CsScripts\lookat.cs" />
     <Compile Include="Assets\CsScripts\RenderDepth.cs" />
     <Compile Include="Assets\CsScripts\SnapDepthCamera.cs" />
-    <Compile Include="Assets\CsScripts\ViewPortTest.cs" />
+    <Compile Include="Assets\CsScripts\Transformation\CameraTransformation.cs" />
+    <Compile Include="Assets\CsScripts\Transformation\PositionTransformation.cs" />
+    <Compile Include="Assets\CsScripts\Transformation\RotationTransformation.cs" />
+    <Compile Include="Assets\CsScripts\Transformation\ScaleTransformation.cs" />
+    <Compile Include="Assets\CsScripts\Transformation\Transformation.cs" />
+    <Compile Include="Assets\CsScripts\Transformation\TransformationGrid.cs" />
+    <Compile Include="Assets\CsScripts\Transformation\ViewPortTest.cs" />
     <Compile Include="Assets\CsScripts\Z_axis_depth_cam_scrp.cs" />
     <Compile Include="Assets\CsScripts\Z_axis_SnapCam_scrp.cs" />
     <None Include="Assets\Z_axis_Shader.shader" />
