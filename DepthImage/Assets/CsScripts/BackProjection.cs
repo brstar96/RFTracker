@@ -35,14 +35,19 @@ public class BackProjection_1122 : MonoBehaviour
         }
         for (int count = 0; count < grayScalePixcels.Count; count++)
         {
-            vertexPositions.Add(new Vector3(grayScalePixcels[count].x / 512f, grayScalePixcels[count].y / 512f, grayScalePixcels[count].z / 2.55f));
+            vertexPositions.Add(new Vector3(grayScalePixcels[count].x / 512f, grayScalePixcels[count].y / 512f, grayScalePixcels[count].z / 5.12f));
         }
 
         for (int j = 0; j < SphereList.Count; j++)
         {
             //SphereList[j].transform.position = new Vector3(vertexPositions[j].x, vertexPositions[j].y, vertexPositions[j].z);
+<<<<<<< HEAD
             SphereList[j].transform.position = new Vector3(vertexPositions[j].x - 0.5f, vertexPositions[j].y - 0.5f, (vertexPositions[j].z * 2.5f) - 0.5f);
             // getDisplacement(); //call 'getDisplacement' function for calculate displacement value per 'GT-backprojected vertex pair'. (11.18)
+=======
+            SphereList[j].transform.position = new Vector3(vertexPositions[j].x, vertexPositions[j].y, vertexPositions[j].z * 5);
+           // getDisplacement(); //call 'getDisplacement' function for calculate displacement value per 'GT-backprojected vertex pair'. (11.18)
+>>>>>>> parent of 30de40d4... 1121 major update
         }
 
     }
