@@ -33,7 +33,7 @@ public class SnapDepthCamera : MonoBehaviour {
         rt = new RenderTexture(width, height, 32);  // 32 bit depth
         cam.targetTexture = rt;
         writer = new StreamWriter(@"./Assets/datasets.csv");
-        target = GameObject.Find("GeoSphere001").transform;
+       // target = GameObject.Find("GeoSphere001").transform;
         bunny = GameObject.Find("Bunny");
         DepthCamera = GameObject.Find("DepthCamera");
 
@@ -78,7 +78,7 @@ public class SnapDepthCamera : MonoBehaviour {
 
 
     void Update () {
-        //transform.LookAt(target);
+        //transform.LookAt(target.transform.position);
     }
 
     IEnumerator RunMove()
@@ -90,8 +90,8 @@ public class SnapDepthCamera : MonoBehaviour {
             CameraPosition = CameraPositionFileLines[CameraPositionLineNO].Split(' ');
             this.transform.position = new Vector3(float.Parse(CameraPosition[0]), float.Parse(CameraPosition[1]), float.Parse(CameraPosition[2]));
             DepthCamera.transform.position = new Vector3(float.Parse(CameraPosition[0]), float.Parse(CameraPosition[1]), float.Parse(CameraPosition[2]));
-            this.transform.LookAt(target.position);
-            DepthCamera.transform.LookAt(target.position);
+            //this.transform.LookAt(target.position);
+            //DepthCamera.transform.LookAt(target.position);
             
             BunnyPositionFileLines = File.ReadAllLines("D:/RFTracker/DepthImage/Assets/RandomizedFiles/RandomizeTest" + (CameraPositionLineNO + 1) + ".csv");
             for (int BunnyPositionLineNo = 0; BunnyPositionLineNo < 20; BunnyPositionLineNo++)
