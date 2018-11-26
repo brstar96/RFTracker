@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/SeenForLearning(1126).unity
+- path: Assets/Learning/Scene/SeenForLearning(1126).unity
   isLoaded: 1
   isActive: 1
