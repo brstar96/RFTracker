@@ -33,7 +33,7 @@ targets = TrainData["target"]  # 정답 레이블은 보스턴 데이터셋의 .
 
 TestDegree =0.5
 TestImagePath = "TestImages/0_5degree"
-TestData  = MyData.LoadTestDataSet(TestDegree,TestImagePath)
+TestData = MyData.LoadTestDataSet(TestDegree,TestImagePath)
 df  = TestData["df"]
 df_list = TestData["df_list"]
 
