@@ -5,21 +5,20 @@ using System.IO;
 public class BackProjectionTest : MonoBehaviour
 {
     string PATH = "D:/DepthTestImgs/0.png";
-
+    public Transform target;
     void Start()
     {
         BackProj();
-       
     }
+    
     private void Update()
     {
-        //GameObject.Find("Z_axis_Depth_Cam").transform.position = GameObject.Find("Z_axis_Snap_Cam").transform.position;
-        //GameObject.Find("Z_axis_Depth_Cam").transform.rotation = GameObject.Find("Z_axis_Snap_Cam").transform.rotation;
+      
+        this.transform.LookAt(target);
     }
     private void BackProj()
     {
         
-
         List<GameObject> SphereList = new List<GameObject>(); //20개의 sphere 오브젝트를 만들기 위한 리스트
         Backprojection();
     }
@@ -79,6 +78,7 @@ public class BackProjectionTest : MonoBehaviour
         }
 
         return grayScalePixcels;
+        
 
         Destroy(tex);
         grayScalePixcels = null;

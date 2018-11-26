@@ -318,7 +318,6 @@ GameObject:
   - component: {fileID: 1317520041}
   - component: {fileID: 1317520040}
   - component: {fileID: 1317520043}
-  - component: {fileID: 1317520044}
   m_Layer: 0
   m_Name: DepthCamera
   m_TagString: Untagged
@@ -397,17 +396,6 @@ MonoBehaviour:
   width: 512
   height: 512
   target: {fileID: 1370392871}
---- !u!114 &1317520044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1317520039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4a5f9cbf386c74d8915418e8034533, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1370392871
 Transform:
   m_ObjectHideFlags: 0
@@ -451,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0189c121c385f7c4a8ff7f0a2c6d2e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1370392871}
   mat: {fileID: 2100000, guid: e7512128ceaeccf40b96f2a0cb75f32b, type: 2}
   MovingSpeed: 0.0001
   width: 512
@@ -500,7 +488,7 @@ Camera:
   near clip plane: 0.01
   far clip plane: 2
   field of view: 90
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -524,7 +512,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1536167435}
   m_LocalRotation: {x: 0.38736576, y: -0.057078917, z: 0.024037153, w: 0.9198435}
-  m_LocalPosition: {x: 0.0864, y: 0.7155, z: -0.6935}
+  m_LocalPosition: {x: 0.0864, y: 0.7155, z: 1.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

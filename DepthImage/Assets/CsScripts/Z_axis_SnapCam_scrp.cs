@@ -7,7 +7,7 @@ public class Z_axis_SnapCam_scrp : MonoBehaviour {
     public Material mat;
     public int width = 512;
     public int height = 512;
-
+    public Transform target;
     private Camera cam;
     private RenderTexture rt;
     private int image_id = 0;
