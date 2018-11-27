@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: LearningDepthmaterial
-  m_Shader: {fileID: 4800000, guid: 79dcd3af7185c064fabb5f6f6e7f6645, type: 3}
+  m_Shader: {fileID: 4800000, guid: 3bf5cc6c259bed44caf225d0f2d53b71, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
