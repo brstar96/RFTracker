@@ -25,7 +25,8 @@ public class WorkingScr1202 : MonoBehaviour{
     List<Vector3> TDxj_list;
     void Start()
     {
-
+        
+        
         cam = GetComponent<Camera>();   //获取当前绑定到脚本的相机
         cam.depthTextureMode = DepthTextureMode.Depth;
         rt = new RenderTexture(width, height, 24);  // 24 bit depth
@@ -34,6 +35,7 @@ public class WorkingScr1202 : MonoBehaviour{
         bunny = GameObject.Find("Bunny");
         StartCoroutine("BunnyMove");
         strList = new List<string>();
+        
     }
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
@@ -91,8 +93,11 @@ public class WorkingScr1202 : MonoBehaviour{
         {
             Vector3 cubePosition =  cam.ScreenToWorldPoint(nj_pixels[i]); // 20 개의 front face
             GameObject singleCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            singleCube.transform.localScale = new Vector3(0.0009f, 0.0009f, 0.0009f);
+            singleCube.transform.localScale = new Vector3(0.0022f, 0.0022f, 0.0022f);
             singleCube.transform.localPosition = new Vector3(2 * cubePosition.x, 2 * cubePosition.y, 2 * (cubePosition.z + 0.5f));
+            //Xj Cube를 빨강색으로 렌더링 
+            singleCube.GetComponent<MeshRenderer>().material.color = new Color((float)1.0f, (float)0.0f, (float)0.0f);
+
             XjPositions.Add(cubePosition); //Backprojection과정에 사용
             cubePositionList.Add(cubePosition);
         }
@@ -132,12 +137,14 @@ public class WorkingScr1202 : MonoBehaviour{
             for (int x =0;x<20;x++)
         {
             GameObject Sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            Sphere.transform.localScale = new Vector3(0.0009f, 0.0009f, 0.0009f);
+            Sphere.transform.localScale = new Vector3(0.0036f, 0.0036f, 0.0036f);
             Sphere.transform.localPosition = new Vector3(TDxj_list[x].x, TDxj_list[x].y, TDxj_list[x].z);
-            
+            //TD(xj)를 파란색으로 렌더링 
+            Sphere.GetComponent<MeshRenderer>().material.color = new Color((float)0.0f, (float)0.0f, (float)1.0f);
         }
         file.Close();
-        
+        GameObject.Find("Bunny").SetActive(false); //false to hide Gameobject, true to show.
+
         for (int i=0;i<20;i++)
         {
             Debug.Log("XjPositions: " + " x: " + XjPositions[i].x + " y: " + XjPositions[i].y + " z: " + XjPositions[i].z);
@@ -153,14 +160,20 @@ public class WorkingScr1202 : MonoBehaviour{
     List<Vector3> multiply_InvT_And_Projection(Vector3 t, Vector3 r, List<Vector3> moved)
     {
         List<Vector3> inversedList = new List<Vector3>();
-        Vector3 projected_multiply_Vector3;
         Quaternion quaternion = Quaternion.Euler(r);
         matrix = Matrix4x4.TRS(new Vector3(t.x/10.0f,t.y/10.0f,t.z/10.0f), quaternion, new Vector3(1, 1, 1));
         Matrix4x4 m_inv = matrix.inverse;
         for (int d = 0; d < moved.Count; d++)
         {
             Vector3 mulplied = m_inv.MultiplyPoint(moved[d]);
-          //  projected_multiply_Vector3 = cam.WorldToScreenPoint(mulplied);
+            
+            //xj를 시각화
+            GameObject Cylinder = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            Cylinder.transform.localScale = new Vector3(0.0018f, 0.0009f, 0.0018f);
+            Cylinder.transform.localPosition = new Vector3(mulplied.x, mulplied.y, mulplied.z);
+            //xj를 초록색으로 렌더링 
+            Cylinder.GetComponent<MeshRenderer>().material.color = new Color((float)0.0f, (float)1.0f, (float)0.0f);
+
             inversedList.Add(mulplied);
         }
         return inversedList;
@@ -171,7 +184,7 @@ public class WorkingScr1202 : MonoBehaviour{
         List<Vector3> BackProjList = new List<Vector3>();
         Vector3 Backproj_multiply_Vector3;
         Quaternion quaternion = Quaternion.Euler(r);
-        Matrix4x4 matrix = Matrix4x4.TRS(new Vector3(t.x /10.0f, t.y / 10.0f, t.z / 10.0f), quaternion, new Vector3(1, 1, 1));
+        Matrix4x4 Tmatrix = Matrix4x4.TRS(new Vector3(t.x /10.0f, t.y / 10.0f, t.z / 10.0f), quaternion, new Vector3(1, 1, 1));
 
         for (int index = 0; index < moved.Count; index++)
         {
