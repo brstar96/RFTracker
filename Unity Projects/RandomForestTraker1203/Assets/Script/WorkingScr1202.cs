@@ -1,4 +1,4 @@
-﻿//1202
+﻿//1202 - Rotation이 들어가지 않은 상태로 WorldtoScreen과 ScreentoWorld함수 실행한 스크립트(결과스샷 1203_noRotation.jpg 참고)
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +16,7 @@ public class WorkingScr1202 : MonoBehaviour{
     String[] BunnyPositionFileLines, colums, randomizeFileList;
     List<Vector3> grayScaleList, grayScalePixcels, vertexPositions, tempList;
     List<GameObject> SphereList = new List<GameObject>(); //게임씬에 Sphere를 생성하기 위한 리스트
-    GameObject bunny;
+    GameObject StanfordBunny;
     Matrix4x4 matrix;
     List<GameObject> selectedSpheres;
     float displacementSum, displacement = 0;
@@ -32,7 +32,7 @@ public class WorkingScr1202 : MonoBehaviour{
         rt = new RenderTexture(width, height, 24);  // 24 bit depth
         cam.targetTexture = rt;
         SnapFlag = true;
-        bunny = GameObject.Find("Bunny");
+        StanfordBunny = GameObject.Find("StanfordBunny");
         StartCoroutine("BunnyMove");
         strList = new List<string>();
         
@@ -143,7 +143,7 @@ public class WorkingScr1202 : MonoBehaviour{
             Sphere.GetComponent<MeshRenderer>().material.color = new Color((float)0.0f, (float)0.0f, (float)1.0f);
         }
         file.Close();
-        GameObject.Find("Bunny").SetActive(false); //false to hide Gameobject, true to show.
+        GameObject.Find("StanfordBunny").SetActive(false); //false to hide Gameobject, true to show.
 
         for (int i=0;i<20;i++)
         {
