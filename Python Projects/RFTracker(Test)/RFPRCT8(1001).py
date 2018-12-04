@@ -88,6 +88,7 @@ from scipy.stats import spearmanr, pearsonr
 
 # predict메소드의 인수는 학습에 사용했던 원래 X데이터와 동일한 형태로 들어와야 한다.
 predicted_train = rf.predict(X_train)
+
 # predicted_test = rf.predict(X_test) #모든 테스트셋에 대해 테스트 수행
 # predicted_test = rf.predict(df_scaled) #모든 테스트셋에 대해 테스트 수행
 
