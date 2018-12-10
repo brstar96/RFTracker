@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Tracking1204.unity
+- path: Assets/Scenes/Tracking_1210_singleview.unity
   isLoaded: 1
   isActive: 1
