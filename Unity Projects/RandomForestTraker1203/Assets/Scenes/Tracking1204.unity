@@ -280,11 +280,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 0}
-  MovingSpeed: 0.005
-  width: 512
-  height: 512
-  GTBunnyPositions: []
-  PredictedBunnyPositions: []
 --- !u!81 &672585328
 AudioListener:
   m_ObjectHideFlags: 0

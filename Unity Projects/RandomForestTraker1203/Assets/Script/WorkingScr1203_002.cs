@@ -43,7 +43,7 @@ public class WorkingScr1203_002 : MonoBehaviour
 
         if (IsBunnyMove == true)
         {//각 뷰포인트마다 토끼를 움직일 경우 실행하는 구문. 
-            T_FileLInes = File.ReadAllLines("./Assets/DataFiles/RandomizeTest1.csv");
+            T_FileLInes = File.ReadAllLines("./Assets/DataFiles/TauRandomize1.csv");
 
             //CameraPosition = Geodesic Grid의 Vertex 개수(=Nv viewpoints, default = 642)
             for (int CameraPosition = 0; CameraPosition < 1; CameraPosition++)
@@ -93,7 +93,7 @@ public class WorkingScr1203_002 : MonoBehaviour
         
         for (int CameraPosition = 0; CameraPosition < 1; CameraPosition++)
         {//각 뷰포인트마다 토끼를 움직이지 "않을" 경우 실행하는 구문. 
-            T_FileLInes = File.ReadAllLines("./Assets/DataFiles/RandomizeTest" + (CameraPosition + 1) + ".csv");
+            T_FileLInes = File.ReadAllLines("./Assets/DataFiles/TauRandomize" + (CameraPosition + 1) + ".csv"); 
 
             for (int RandomizeCount = 0; RandomizeCount < 2500; RandomizeCount++) //default = 2500
             {
@@ -118,7 +118,7 @@ public class WorkingScr1203_002 : MonoBehaviour
             }
             strList.Add(str);
             }
-            StreamWriter file = new StreamWriter("D:/RFTracker/Unity Projects/RandomForestTraker1203/Assets/Datasets/CameraPosition" + CameraPosition+".csv");
+            StreamWriter file = new StreamWriter("D:/RFTracker/Unity Projects/RandomForestTraker1203/Assets/Datasets/DisplacementWithTau" + CameraPosition+".csv");
             for (int i =0;i<strList.Count;i++)
             {
                 file.WriteLine(strList[i]);
